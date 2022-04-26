@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
-import App from './App';
+import { render } from "react-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,7 +10,10 @@ import {
   useQuery,
   gql
 } from "@apollo/client";
-
+import App from './App';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup'
 
 const client = new ApolloClient({
   uri: 'https://48p1r2roz4.sse.codesandbox.io',
@@ -17,7 +21,16 @@ const client = new ApolloClient({
 }); 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </ApolloProvider>,
   document.getElementById('root')
 );
