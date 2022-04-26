@@ -1,9 +1,11 @@
 import React from 'react'
 import LoginForm from '../Components/LoginForm'
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate()
   
-  let signupButton = <button>Signup</button>
+  let signupButton = <button onClick={() => navigate('/signup')}>Signup</button>
     return (
         <div>
             <LoginForm />
