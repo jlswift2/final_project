@@ -25,7 +25,7 @@ function SignupForm() {
   
     return (
     <div>
-        <h1>Login Form</h1>
+        <h1>Signup Form</h1>
         <form onSubmit={handleSubmit}>
             <label htmlFor="first_name">First Name:</label>
             <input
