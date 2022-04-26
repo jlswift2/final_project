@@ -51,3 +51,8 @@ end
 gem "active_model_serializers", "~> 0.10.13"
 
 gem "graphql", "~> 2.0"
+gem "graphiql-rails", group: :development
+
+gem 'sass-rails', '~> 6.0'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
+
