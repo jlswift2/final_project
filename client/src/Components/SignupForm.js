@@ -1,6 +1,42 @@
 import React, { useState } from 'react'
 import { gql, useMutation } from '@apollo/client';
 
+const CREATE_USER = gql`
+    mutation CreateUser (
+        $username: String!,
+        $password: String!,
+        $email: String!,
+        $firstName: String!,
+        $lastName: String!
+    ) {
+        createUser(input: {username: $username, authProvider:{credentials: {password: $password, email: $email}}, firstName: $firstName, lastName: $lastName}){
+            id
+            username
+            firstName
+            friendCode
+        }
+    }
+`;
+
+// mutation{
+//     createUser(input: {
+//       username: "Test",
+//       firstName: "Timmy",
+//       lastName: "Sloop",
+//       authProvider: {
+//         credentials: {
+//           email: "justin@please.com",
+//           password: "12345"
+//         }
+//       }
+//     }) {
+//       id
+//       firstName
+//       email
+//     }
+//   }
+  
+
 function SignupForm() {
     const [formData, setFormData] = useState({
         username: "",
@@ -10,6 +46,16 @@ function SignupForm() {
         first_name: "",
         last_name: ""
       });
+
+    const [createUser] = useMutation(CREATE_USER, {
+        variables: {
+            username: formData.username,
+            password: formData.password,
+            email: formData.email,
+            firstName: formData.first_name,
+            lastName: formData.last_name
+        }
+    })
 
     function handleFormChange(e) {
     setFormData({
@@ -21,6 +67,7 @@ function SignupForm() {
     function handleSubmit (e) {
         e.preventDefault();
         console.log(formData)
+        createUser();
     }
   
   
@@ -77,3 +124,4 @@ function SignupForm() {
 }
 
 export default SignupForm
+

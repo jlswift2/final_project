@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 
 function LoginForm() {
     const [formData, setFormData] = useState({
-        username: "",
+        email: "",
         password: "",
-        password_confirmation: "",
       });
 
     function handleFormChange(e) {
@@ -24,11 +23,11 @@ function LoginForm() {
     <div>
         <h1>Login Form</h1>
         <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="email">Email:</label>
             <input
-                type="text"
-                name="username"
-                value={formData.username}
+                type="email"
+                name="email"
+                value={formData.email}
                 onChange={handleFormChange}
             />
             <label htmlFor="password">Password:</label>
@@ -36,13 +35,6 @@ function LoginForm() {
                 type="password"
                 name="password"
                 value={formData.password}
-                onChange={handleFormChange}
-            />
-            <label htmlFor="password_confirmation">Confirm Password:</label>
-            <input
-                type="password"
-                name="password_confirmation"
-                value={formData.password_confirmation}
                 onChange={handleFormChange}
             />
             <button type="submit">Submit</button>
