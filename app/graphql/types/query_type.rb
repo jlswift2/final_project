@@ -14,6 +14,16 @@ module Types
     def users
       User.all
     end 
+
+    # field :user,
+    #   [Types::UserType],
+    #   null: false, 
+    #   description: "Find a user by ID"
+
+    # def user(id: $id)
+    #   User.find(id)
+    # end
+
     # TODO: remove me
     field :test_field, String, null: false,
       description: "An example field added by the generator"

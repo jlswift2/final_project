@@ -21,7 +21,7 @@ module Mutations
 
     type Types::UserType
 
-
+    
     def resolve(auth_provider: nil, username: nil, first_name: nil, last_name: nil )
       User.create!(
         username: username,
